@@ -2,7 +2,7 @@
 
 **Offline-first inspections for field maintenance teams.** FieldProof lets technicians complete checklists, capture photos and sign off with no connectivity, then syncs safely when the signal returns. Supervisors resolve conflicts and approve reports before a client sees them.
 
-> **Status:** early development, following an 8-week roadmap (see below). No application code yet. All companies, sites, assets and photos are synthetic or staged; this is not a certified compliance record.
+> **Status:** early development, following an 8-week roadmap (see below). The Dart workspace and app shells are in place; features are not built yet. All companies, sites, assets and photos are synthetic or staged; this is not a certified compliance record.
 
 ## The problem
 
@@ -104,4 +104,19 @@ fieldproof/
 
 ## Getting started
 
-Setup instructions will be added once the first apps are in place.
+Requirements: Flutter 3.47 or newer (Dart 3.13+). Firebase emulator setup will be documented once it is added.
+
+```bash
+flutter pub get            # resolves the whole Dart workspace
+dart run melos run check   # format check, analyze and all tests
+dart run melos run test    # tests only
+```
+
+Run the apps:
+
+```bash
+cd apps/console && flutter run -d chrome   # web console
+cd apps/mobile && flutter run              # technician app on a device or emulator
+```
+
+Project documents: [charter](docs/charter.md), [personas](docs/personas.md), [glossary](docs/glossary.md), [ADR 0001](docs/adr/0001-offline-first-on-firebase.md).

@@ -1,0 +1,14 @@
+# Dart / Flutter
+.dart_tool/
+build/
+coverage/
+.flutter-plugins-dependencies
+*.iml
+.idea/
+
+# OS / editors
+.DS_Store
+*.swp
+
+# Local environment
+.env

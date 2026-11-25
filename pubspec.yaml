@@ -1,0 +1,53 @@
+name: fieldproof_workspace
+description: FieldProof monorepo root (Dart pub workspace managed with Melos).
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+workspace:
+  - apps/mobile
+  - apps/console
+  - packages/fieldproof_core
+
+dev_dependencies:
+  melos: ^8.10.1
+
+melos:
+  repository: https://github.com/aballesterosmarin1-code/FieldProof
+
+  scripts:
+    format:check:
+      description: Fail if any Dart file is not formatted.
+      run: dart format --output=none --set-exit-if-changed apps packages
+
+    analyze:
+      description: Analyze every package; infos and warnings fail the run.
+      exec: flutter analyze --fatal-infos --fatal-warnings .
+
+    test:dart:
+      description: Run unit tests in pure Dart packages.
+      exec: dart test
+      packageFilters:
+        flutter: false
+        dirExists: test
+
+    test:flutter:
+      description: Run widget tests in Flutter apps and packages.
+      exec: flutter test
+      packageFilters:
+        flutter: true
+        dirExists: test
+
+    test:
+      description: Run all Dart and Flutter tests.
+      dependsOn:
+        - test:dart
+        - test:flutter
+
+    check:
+      description: Format check, analyze and test (what CI runs for Dart code).
+      dependsOn:
+        - format:check
+        - analyze
+        - test
