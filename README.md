@@ -121,6 +121,8 @@ npm run test:rules         # deny-by-default Firestore and Storage rules tests
 npm --prefix functions run check   # functions typecheck, unit tests and build
 ```
 
+Demo accounts for the Auth emulator: `npm run demo:users` while the emulators run. Full setup, emulator ports, demo accounts and CI jobs: [docs/setup.md](docs/setup.md).
+
 Run the apps:
 
 ```bash
@@ -128,4 +130,4 @@ cd apps/console && flutter run -d chrome   # web console
 cd apps/mobile && flutter run              # technician app on a device or emulator
 ```
 
-Project documents: [charter](docs/charter.md), [personas](docs/personas.md), [glossary](docs/glossary.md), [ADR 0001](docs/adr/0001-offline-first-on-firebase.md).
+Project documents: [setup](docs/setup.md), [charter](docs/charter.md), [personas](docs/personas.md), [glossary](docs/glossary.md), [ADR 0001](docs/adr/0001-offline-first-on-firebase.md).
