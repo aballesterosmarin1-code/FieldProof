@@ -2,7 +2,7 @@
 
 **Offline-first inspections for field maintenance teams.** FieldProof lets technicians complete checklists, capture photos and sign off with no connectivity, then syncs safely when the signal returns. Supervisors resolve conflicts and approve reports before a client sees them.
 
-> **Status:** early development, following an 8-week roadmap (see below). No application code yet. All companies, sites, assets and photos are synthetic or staged; this is not a certified compliance record.
+> **Status:** early development, following an 8-week roadmap (see below). The Dart workspace and app shells are in place; features are not built yet. All companies, sites, assets and photos are synthetic or staged; this is not a certified compliance record.
 
 ## The problem
 
@@ -93,7 +93,7 @@ fieldproof/
 
 | Week | Focus | Status |
 |---|---|---|
-| Week 1 | **Product definition & Flutter/Firebase bootstrap** — Add charter, ADR 0001 and Dart workspace, configure Firebase emulators, functions and deny-by-default rules | Planned |
+| Week 1 | **Product definition & Flutter/Firebase bootstrap** — Add charter, ADR 0001 and Dart workspace, configure Firebase emulators, functions and deny-by-default rules | ✅ Done |
 | Week 2 | **Authentication, orgs & roles** — Add sign-in with Riverpod session state and role claims, add org and role security rules with role-aware navigation | Planned |
 | Week 3 | **Templates, scoring & online runner** — Add versioned checklist templates with Dart and TypeScript scoring, add template editor and publishing, add assignments, QR lookup and checklist runner, add idempotent event folding | Planned |
 | Week 4 | **Offline-first sync** — Add offline sync protocol with idempotent event writes, add local pending queue and sync status screen | Planned |
@@ -104,4 +104,30 @@ fieldproof/
 
 ## Getting started
 
-Setup instructions will be added once the first apps are in place.
+Requirements: Flutter 3.47 or newer (Dart 3.13+); for the Firebase emulators, Node.js 22 and Java 21.
+
+```bash
+flutter pub get            # resolves the whole Dart workspace
+dart run melos run check   # format check, analyze and all tests
+dart run melos run test    # tests only
+```
+
+Firebase Local Emulator Suite (project `demo-fieldproof`, no real Firebase project needed):
+
+```bash
+npm install && npm --prefix functions install
+npm run emulators          # Auth, Firestore, Storage, Functions; UI on http://127.0.0.1:4000
+npm run test:rules         # deny-by-default Firestore and Storage rules tests
+npm --prefix functions run check   # functions typecheck, unit tests and build
+```
+
+Demo accounts for the Auth emulator: `npm run demo:users` while the emulators run. Full setup, emulator ports, demo accounts and CI jobs: [docs/setup.md](docs/setup.md).
+
+Run the apps:
+
+```bash
+cd apps/console && flutter run -d chrome   # web console
+cd apps/mobile && flutter run              # technician app on a device or emulator
+```
+
+Project documents: [setup](docs/setup.md), [charter](docs/charter.md), [personas](docs/personas.md), [glossary](docs/glossary.md), [ADR 0001](docs/adr/0001-offline-first-on-firebase.md).

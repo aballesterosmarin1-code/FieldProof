@@ -1,0 +1,22 @@
+{
+  "name": "fieldproof-firebase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Firebase tooling for FieldProof: Emulator Suite, security rules tests.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "functions:build": "npm --prefix functions run build",
+    "emulators": "npm run functions:build && firebase emulators:start --project demo-fieldproof",
+    "test:rules": "firebase emulators:exec --only firestore,storage --project demo-fieldproof \"vitest run --config tests/rules/vitest.config.mts\"",
+    "demo:users": "node scripts/demo-users.mjs",
+    "smoke:demo-users": "firebase emulators:exec --only auth --project demo-fieldproof \"node scripts/demo-users.mjs && node scripts/demo-users.mjs\""
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
+    "firebase": "^12.19.0",
+    "firebase-tools": "^15.37.0",
+    "vitest": "^5.1.2"
+  }
+}

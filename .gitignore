@@ -1,0 +1,21 @@
+# Dart / Flutter
+.dart_tool/
+build/
+coverage/
+.flutter-plugins-dependencies
+*.iml
+.idea/
+
+# OS / editors
+.DS_Store
+*.swp
+
+# Local environment
+.env
+
+# Node / Firebase
+node_modules/
+functions/lib/
+.firebase/
+*-debug.log
+firebase-export-*/
