@@ -12,3 +12,10 @@ coverage/
 
 # Local environment
 .env
+
+# Node / Firebase
+node_modules/
+functions/lib/
+.firebase/
+*-debug.log
+firebase-export-*/

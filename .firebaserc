@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "demo-fieldproof",
+    "emulator": "demo-fieldproof"
+  }
+}

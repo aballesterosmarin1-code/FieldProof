@@ -104,12 +104,21 @@ fieldproof/
 
 ## Getting started
 
-Requirements: Flutter 3.47 or newer (Dart 3.13+). Firebase emulator setup will be documented once it is added.
+Requirements: Flutter 3.47 or newer (Dart 3.13+); for the Firebase emulators, Node.js 22 and Java 21.
 
 ```bash
 flutter pub get            # resolves the whole Dart workspace
 dart run melos run check   # format check, analyze and all tests
 dart run melos run test    # tests only
+```
+
+Firebase Local Emulator Suite (project `demo-fieldproof`, no real Firebase project needed):
+
+```bash
+npm install && npm --prefix functions install
+npm run emulators          # Auth, Firestore, Storage, Functions; UI on http://127.0.0.1:4000
+npm run test:rules         # deny-by-default Firestore and Storage rules tests
+npm --prefix functions run check   # functions typecheck, unit tests and build
 ```
 
 Run the apps:
